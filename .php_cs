@@ -1,7 +1,7 @@
 <?php
 
-use PhpCsFixer\Finder;
 use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 
 $finder = Finder::create()
     ->exclude('bootstrap/cache')
@@ -24,5 +24,8 @@ return Config::create()
         'phpdoc_order' => true,
         'phpdoc_types_order' => true,
         'align_multiline_comment' => true,
+        'phpdoc_align' => true,
+        'phpdoc_indent' => true,
+        'no_extra_blank_lines' => true,
     ])
     ->setFinder($finder);
