@@ -1,33 +1,30 @@
-<div class="container list">
-    <div class="row">
-        <ul class="list-unstyled col-md-10 offset-md-1">
-            @forelse($articles as $article)
-            <li class="media">
-                <div class="media-body">
-                    <h6 class="media-heading">
+<div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
+    @forelse($articles as $article)
+        <section class="hero">
+            <div class="hero-body">
+                <h6 class="article-title title">
+                    <a href="{{ url($article->slug) }}">
+                        {{ $article->title }}
+                    </a>
+                </h6>
+                <p></p>
+                <p class="subtitle">
+                    {{ str_limit($article->content, 300) }}
+                </p>
+                <div class="extra">
+                    <div class="info">
+                        <span class="icon is-small"><i class="fa fa-clock-o"></i></span>
+                        {{ $article->updated_at->format('Y-m-d') }}&nbsp;,&nbsp;
                         <a href="{{ url($article->slug) }}">
-                            {{ $article->title }}
+                            阅读全文 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
                         </a>
-                    </h6>
-                    <div class="meta">
-                        <span class="cinema">{{ $article->subtitle }}</span>
-                    </div>
-                    <div class="description">
-                        {{ $article->meta_description }}
-                    </div>
-                    <div class="extra">
-                        <div class="info">
-                            <i class="fas fa-clock"></i>{{ $article->updated_at->diffForHumans() }}&nbsp;,&nbsp;
-                            <a href="{{ url($article->slug) }}" class="float-right">
-                                Read More <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
-            </li>
-            @empty
-                <h3 class="text-center"></h3>
-            @endforelse
-        </ul>
+            </div>
+        </section>
+    @empty
+        <h3 class="text-center"></h3>
+    @endforelse
     </div>
 </div>

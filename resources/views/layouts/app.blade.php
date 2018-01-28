@@ -15,6 +15,7 @@
     <title>@yield('title', config('app.name'))</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -29,9 +30,7 @@
 </head>
 <body>
 <div id="app">
-    @include('particals.navbar')
-
-    <div class="main">
+    <div class="container">
         @yield('content')
     </div>
 
@@ -42,12 +41,6 @@
 <script src="{{ mix('js/app.js') }}"></script>
 
 @yield('scripts')
-
-<script>
-    $(function () {
-        $("[data-toggle='tooltip']").tooltip();
-    });
-</script>
 
 @if(config('blote.google.open'))
     <script>
@@ -65,6 +58,18 @@
 
         ga('create', '{{ config('blote.google.id') }}', 'auto');
         ga('send', 'pageview');
+    </script>
+@endif
+
+@if(config('blote.baidu.open'))
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?{{ config('blote.baidu.id') }}";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
 @endif
 </body>

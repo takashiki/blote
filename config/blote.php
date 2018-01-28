@@ -27,6 +27,11 @@ return [
         'id' => env('GOOGLE_ANALYTICS_ID', 'Google-Analytics-ID'),
     ],
 
+    'baidu' => [
+        'open' => env('BAIDU_TONGJI_OPEN') ?: false,
+        'id' => env('BAIDU_TONGJI_ID', 'Baidu-Tongji-ID'),
+    ],
+
     'footer' => [
         'github' => [
             'open' => true,
