@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "bensampo/laravel-enum": "^1.4",
         "fideloper/proxy": "~3.3",
+        "graham-campbell/markdown": "^9.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.17.0",

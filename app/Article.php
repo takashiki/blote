@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
+use Markdown;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -24,4 +27,13 @@ class Article extends Model implements Transformable
      */
     protected $fillable = [];
 
+    public function getHtmlAttribute()
+    {
+        return Markdown::convertToHtml($this->content);
+    }
+
+    public function getExcerptAttribute()
+    {
+        return Str::limit(strip_tags($this->html), 300);
+    }
 }
