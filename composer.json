@@ -1,26 +1,26 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "takashiki/blote",
+    "description": "Yet another laravel blog.",
+    "keywords": ["blog", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
-        "bensampo/laravel-enum": "^1.4",
-        "fideloper/proxy": "~3.3",
-        "graham-campbell/markdown": "^9.0",
-        "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0",
-        "league/fractal": "^0.17.0",
-        "prettus/l5-repository": "^2.6",
-        "yajra/laravel-auditable": "2.0"
+        "php": ">=7.1.3",
+        "bensampo/laravel-enum": "*",
+        "fideloper/proxy": "*",
+        "graham-campbell/markdown": "*",
+        "laravel/framework": "5.6.*",
+        "laravel/tinker": "*",
+        "league/fractal": "*",
+        "prettus/l5-repository": "*",
+        "yajra/laravel-auditable": "*"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.4",
-        "filp/whoops": "~2.0",
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "~1.0",
-        "phpunit/phpunit": "~6.0"
+        "barryvdh/laravel-ide-helper": "*",
+        "filp/whoops": "*",
+        "fzaninotto/faker": "*",
+        "mockery/mockery": "*",
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "classmap": [
