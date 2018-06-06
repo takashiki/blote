@@ -7,6 +7,7 @@
     "require": {
         "php": ">=7.1.3",
         "bensampo/laravel-enum": "*",
+        "cviebrock/eloquent-sluggable": "^4.5",
         "fideloper/proxy": "*",
         "graham-campbell/markdown": "*",
         "laravel/framework": "5.6.*",
@@ -16,11 +17,13 @@
         "yajra/laravel-auditable": "*"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "*",
         "filp/whoops": "*",
         "fzaninotto/faker": "*",
         "mockery/mockery": "*",
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "rap2hpoutre/laravel-log-viewer": "^0.14.3"
     },
     "autoload": {
         "classmap": [
