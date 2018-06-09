@@ -4,8 +4,8 @@
 
 @import "~bulma/bulma";
 
-//$fa-font-path: "~font-awesome/fonts";
-//@import "~font-awesome/scss/font-awesome";
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
 
 #app {
   background: $white-ter;
@@ -21,4 +21,12 @@ a:hover {
 
 .info a {
   color: $blue;
+}
+
+.article-list section {
+  margin-top: -2rem;
+}
+
+.header {
+  padding-bottom: 3rem;
 }

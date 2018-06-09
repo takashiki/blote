@@ -4,18 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="{{ config('blote.meta.keywords') }}">
-    <meta name="description" content="{{ config('blote.meta.description') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="shortcut icon" href="{{ config('blote.default_icon') }}">
-
     <title>@yield('title', config('app.name'))</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -30,6 +25,10 @@
 </head>
 <body>
 <div id="app">
+    <div class="container">
+        <div class="columns header"></div>
+    </div>
+
     <div class="container">
         @yield('content')
     </div>

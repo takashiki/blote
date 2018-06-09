@@ -1,10 +1,18 @@
-<footer id="footer" class="footer">
-    <div class="container text-center">
-        <div class="row content">
+<footer class="footer">
 
+        <hr>
+
+        <div class="columns">
+            <div class="column">
+                <p class="has-text-centered">
+                    <small>
+                        {{ config('blote.footer.meta') }}
+                        @if (config('blote.footer.beian'))
+                            <a href="http://www.miitbeian.gov.cn">{{ config('blote.footer.beian') }}</a>
+                        @endif
+                    </small>
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="copy-right text-center">
-        <span>{!! config('blog.footer.meta') !!}</span>
     </div>
 </footer>
