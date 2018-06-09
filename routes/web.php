@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('article', 'ArticlesController');
+
+Route::get('/archives/{id}', function ($id) {
+    return redirect()->route('article.show', ['id' => $id]);
+});

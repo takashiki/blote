@@ -26,10 +26,6 @@
 <body>
 <div id="app">
     <div class="container">
-        <div class="columns header"></div>
-    </div>
-
-    <div class="container">
         @yield('content')
     </div>
 

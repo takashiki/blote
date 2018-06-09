@@ -6,3 +6,4 @@
  */
 
 window.Vue = require('vue');
+hljs = require('highlight.js');

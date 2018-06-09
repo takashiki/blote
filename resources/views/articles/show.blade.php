@@ -3,46 +3,18 @@
 @section('title', $article->title)
 
 @section('content')
-
-    <div class="article container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-
-                <parse content="{{ $article->content['raw'] }}"></parse>
-
-                @if($article->is_original)
-                    <div class="publishing alert alert-dismissible alert-info">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {!! config('blog.license') !!}
-                    </div>
-                @endif
-                @if(config('blog.social_share.article_share'))
-                    <div class="footing">
-                        <div class="social-share"
-                             data-title="{{ $article->title }}"
-                             data-description="{{ $article->title }}"
-                             {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }}
-                             {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }}
-                             initialized></div>
-                    </div>
-                @endif
+    <div class="columns">
+        <div class="column is-three-fifths is-offset-one-fifth">
+            <div class="header">
+                <h1 class="title is-3 has-text-centered">{{ $article->title }}</h1>
+                <p class="title is-6 has-text-centered is-gray">
+                    <span class="icon"><i class="fa fa-clock-o"></i></span>{{ $article->updated_at->format('Y-m-d') }}
+                </p>
             </div>
+
+            <div class="content">{!! $article->html !!}</div>
         </div>
     </div>
-
-    @if(Auth::guest())
-        <comment title="评论"
-                 commentable-type="articles"
-                 commentable-id="{{ $article->id }}"></comment>
-    @else
-        <comment title="评论"
-                 username="{{ Auth::user()->name }}"
-                 user-avatar="{{ Auth::user()->avatar }}"
-                 commentable-type="articles"
-                 commentable-id="{{ $article->id }}"
-                 can-comment></comment>
-    @endif
-
 @endsection
 
 @section('scripts')

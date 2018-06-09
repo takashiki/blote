@@ -4,10 +4,12 @@
 
 @import "~bulma/bulma";
 
+@import "~highlight.js/styles/agate.css";
+
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
-#app {
+body {
   background: $white-ter;
 }
 
@@ -23,10 +25,14 @@ a:hover {
   color: $blue;
 }
 
+.article-list {
+  margin-top: 3rem;
+}
+
 .article-list section {
   margin-top: -2rem;
 }
 
 .header {
-  padding-bottom: 3rem;
+  padding: 3rem;
 }
