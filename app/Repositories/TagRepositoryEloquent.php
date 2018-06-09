@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\TagRepository;
-use App\\Tag;
+use App\Tag;
 use App\Validators\TagValidator;
 
 /**

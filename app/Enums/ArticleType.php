@@ -20,7 +20,7 @@ final class ArticleType extends Enum
      * @param  int $value
      * @return string
      */
-    public static function getDescription(int $value): string
+    public static function getDescription($value): string
     {
         return self::$descriptions[$value] ?? self::getKey($value);
     }

@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\\Article;
+use App\Article;
 
 /**
  * Class ArticleTransformer.

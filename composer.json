@@ -1,7 +1,10 @@
 {
     "name": "takashiki/blote",
     "description": "Yet another laravel blog.",
-    "keywords": ["blog", "laravel"],
+    "keywords": [
+        "blog",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -14,6 +17,7 @@
         "laravel/tinker": "*",
         "league/fractal": "*",
         "prettus/l5-repository": "*",
+        "tcg/voyager": "^1.1",
         "yajra/laravel-auditable": "*"
     },
     "require-dev": {
@@ -41,8 +45,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {
@@ -61,5 +64,11 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
+    },
+    "repositories": {
+        "hooks": {
+            "type": "composer",
+            "url": "https://larapack.io"
+        }
     }
 }

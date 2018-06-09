@@ -95,7 +95,8 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);
-module.exports = __webpack_require__(185);
+__webpack_require__(185);
+module.exports = __webpack_require__(186);
 
 
 /***/ }),
@@ -110,7 +111,7 @@ module.exports = __webpack_require__(185);
  */
 
 window.Vue = __webpack_require__(3);
-hljs = __webpack_require__(7);
+window.hljs = __webpack_require__(7);
 
 /***/ }),
 /* 3 */
@@ -29066,6 +29067,12 @@ module.exports = function(hljs) {
 
 /***/ }),
 /* 185 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 186 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

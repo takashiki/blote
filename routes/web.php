@@ -15,8 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('article', 'ArticlesController');
+Route::resource('articles', 'ArticlesController');
 
 Route::get('/archives/{id}', function ($id) {
-    return redirect()->route('article.show', ['id' => $id]);
+    return redirect()->route('articles.show', ['id' => $id]);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\\Tag;
+use App\Tag;
 
 /**
  * Class TagTransformer.
