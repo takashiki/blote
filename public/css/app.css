@@ -14662,18 +14662,6 @@ html {
   background: whitesmoke;
 }
 
-a {
-  color: #4a4a4a;
-}
-
-a:hover {
-  color: #242424;
-}
-
-.info a {
-  color: #3273dc;
-}
-
 .article-list {
   margin-top: 3rem;
 }
