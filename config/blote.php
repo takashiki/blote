@@ -3,7 +3,7 @@
 return [
     'article' => [
         'pageSize' => 10,
-        'sortColumn' => 'updated_at',
+        'sortColumn' => 'created_at',
         'sort' => 'desc',
     ],
 
