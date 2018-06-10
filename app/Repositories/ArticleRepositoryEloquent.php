@@ -44,5 +44,16 @@ class ArticleRepositoryEloquent extends BaseRepository implements ArticleReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
+    public function findByIdentity($value, $columns = ['*'])
+    {
+        $this->applyCriteria();
+        $this->applyScope();
+        $model = $this->model->where('id', $value)
+            ->orWhere('slug', $value)
+            ->firstOrFail($columns);
+        $this->resetModel();
+
+        return $this->parserResult($model);
+    }
 }

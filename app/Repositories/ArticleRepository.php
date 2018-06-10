@@ -11,5 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface ArticleRepository extends RepositoryInterface
 {
-    //
+    public function findByIdentity($value, $columns = ['*']);
 }

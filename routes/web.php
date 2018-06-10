@@ -13,10 +13,6 @@
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-
-    /*Route::group(['as' => 'admin.'], function () {
-        Route::resource('articles', 'Admin\ArticlesController');
-    });*/
 });
 
 //必须放在最后面，因为 {slug} 会匹配所有不包含 / 的路径

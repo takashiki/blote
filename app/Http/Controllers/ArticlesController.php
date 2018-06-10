@@ -71,7 +71,7 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $article = $this->repository->find($id);
+        $article = $this->repository->findByIdentity($id);
 
         if (request()->wantsJson()) {
             return response()->json([
