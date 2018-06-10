@@ -27,8 +27,7 @@
         "filp/whoops": "*",
         "fzaninotto/faker": "*",
         "mockery/mockery": "*",
-        "phpunit/phpunit": "*",
-        "rap2hpoutre/laravel-log-viewer": "^0.14.3"
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "classmap": [

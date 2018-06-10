@@ -7,6 +7,12 @@ return [
         'sort' => 'desc',
     ],
 
+    'admin' => [
+        'username' => env('ADMIN_USERNAME'),
+        'password' => env('ADMIN_PASSWORD'),
+        'email' => env('ADMIN_EMAIL'),
+    ],
+
     'google' => [
         'open' => env('GOOGLE_ANALYTICS_OPEN') ?: false,
         'id' => env('GOOGLE_ANALYTICS_ID', 'Google-Analytics-ID'),

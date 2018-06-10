@@ -6,7 +6,7 @@
             <div class="column">
                 <p class="has-text-centered">
                     <small>
-                        <a href="mailto:857995137@qq.com">857995137@qq.com</a>
+                        <a href="mailto:{{ config('blote.admin.email') }}">{{ config('blote.admin.email') }}</a>
                         <br>
                         {{ config('blote.footer.meta') }}
                         @if (config('blote.footer.beian'))
