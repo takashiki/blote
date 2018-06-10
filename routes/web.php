@@ -11,17 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('articles', 'ArticlesController');
-
-Route::get('/archives/{id}', function ($id) {
-    return redirect()->route('articles.show', ['id' => $id]);
-});
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    /*Route::group(['as' => 'admin.'], function () {
+        Route::resource('articles', 'Admin\ArticlesController');
+    });*/
+});
+
+//必须放在最后面，因为 {slug} 会匹配所有不包含 / 的路径
+Route::get('/', 'ArticlesController@index');
+Route::get('{slug}', 'ArticlesController@show')->name('articles.show');
+//兼容原 typecho 链接
+Route::get('/archives/{slug}', function ($slug) {
+    return redirect()->route('articles.show', ['slug' => $slug]);
 });

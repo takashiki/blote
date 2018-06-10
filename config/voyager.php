@@ -71,7 +71,7 @@ return [
     */
 
     'storage' => [
-        'disk' => 'public',
+        'disk' => 'cos',
     ],
 
     /*

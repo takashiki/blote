@@ -9,7 +9,7 @@
                     <section class="hero">
                         <div class="hero-body">
                             <h6 class="article-title title">
-                                <a href="{{ url($article->slug) }}">
+                                <a href="{{ route('articles.show', $article->slug) }}">
                                     {{ $article->title }}
                                 </a>
                             </h6>
@@ -21,7 +21,7 @@
                                 <div class="info">
                                     <span class="icon is-small"><i class="fa fa-clock-o"></i></span>
                                     {{ $article->updated_at->format('Y-m-d') }}&nbsp;,&nbsp;
-                                    <a href="{{ url($article->slug) }}">
+                                    <a href="{{ route('articles.show', $article->slug) }}">
                                         阅读全文 <span class="icon is-small"><i class="fa fa-chevron-right"></i></span>
                                     </a>
                                 </div>

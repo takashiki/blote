@@ -63,44 +63,6 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param ArticleCreateRequest $request
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @return \Illuminate\Http\Response
-     *
-     */
-    public function store(ArticleCreateRequest $request)
-    {
-        try {
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $article = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Article created.',
-                'data' => $article->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error' => true,
-                    'message' => $e->getMessageBag(),
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param int $id
@@ -118,79 +80,5 @@ class ArticlesController extends Controller
         }
 
         return view('articles.show', compact('article'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $article = $this->repository->find($id);
-
-        return view('articles.edit', compact('article'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param ArticleUpdateRequest $request
-     * @param string               $id
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @return Response
-     *
-     */
-    public function update(ArticleUpdateRequest $request, $id)
-    {
-        try {
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $article = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'Article updated.',
-                'data' => $article->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error' => true,
-                    'message' => $e->getMessageBag(),
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-            return response()->json([
-                'message' => 'Article deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'Article deleted.');
     }
 }

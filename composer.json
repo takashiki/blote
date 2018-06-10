@@ -12,6 +12,7 @@
         "bensampo/laravel-enum": "*",
         "cviebrock/eloquent-sluggable": "^4.5",
         "fideloper/proxy": "*",
+        "freyo/flysystem-qcloud-cos-v5": "^1.1",
         "graham-campbell/markdown": "*",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "*",
