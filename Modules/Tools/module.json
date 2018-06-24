@@ -1,0 +1,16 @@
+{
+    "name": "Tools",
+    "alias": "tools",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Tools\\Providers\\ToolsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
