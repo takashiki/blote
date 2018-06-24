@@ -10,12 +10,19 @@ export default new VueRouter({
             redirect: '/index'
         },
         {
+            name: 'index',
             path: '/index',
-            component: require('./pages/Index.vue')
+            component: require('./pages/Index.vue'),
+            meta: {
+                title: '工具集'
+            }
         },
         {
             path: '/base64',
-            component: require('./pages/Base64.vue')
+            component: require('./pages/Base64.vue'),
+            meta: {
+                title: 'Base64 编解码'
+            }
         }
     ]
 });

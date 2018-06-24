@@ -10,7 +10,12 @@
 
 <script>
     export default {
-        name: "Index"
+        name: "Index",
+        data() {
+            return {
+                title: '工具集'
+            };
+        }
     }
 </script>
 
