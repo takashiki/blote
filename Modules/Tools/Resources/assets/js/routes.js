@@ -37,6 +37,13 @@ export default new VueRouter({
             meta: {
                 title: '字符串 Hash'
             }
+        },
+        {
+            path: '/timestamp',
+            component: require('./pages/Timestamp.vue'),
+            meta: {
+                title: '时间戳转换'
+            }
         }
     ]
 });

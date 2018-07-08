@@ -15,6 +15,11 @@
                 字符串 Hash
             </router-link>
         </el-col>
+        <el-col :span="6">
+            <router-link :to="{path:'/timestamp'}">
+                时间戳转换
+            </router-link>
+        </el-col>
     </el-row>
 </template>
 
