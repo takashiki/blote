@@ -1,21 +1,26 @@
 <template>
     <el-row :gutter="20">
-        <el-col :span="6">
+        <el-col class="tool-link" :span="6">
             <router-link :to="{path:'/base64'}">
                 Base64 编解码
             </router-link>
         </el-col>
-        <el-col :span="6">
+        <el-col class="tool-link" :span="6">
+            <router-link :to="{path:'/urlEncode'}">
+                UrlEncode 编解码
+            </router-link>
+        </el-col>
+        <el-col class="tool-link" :span="6">
             <router-link :to="{path:'/php2json'}">
                 PHP 数组转 Json
             </router-link>
         </el-col>
-        <el-col :span="6">
+        <el-col class="tool-link" :span="6">
             <router-link :to="{path:'/hash'}">
                 字符串 Hash
             </router-link>
         </el-col>
-        <el-col :span="6">
+        <el-col class="tool-link" :span="6">
             <router-link :to="{path:'/timestamp'}">
                 时间戳转换
             </router-link>
@@ -35,5 +40,8 @@
 </script>
 
 <style lang="scss">
-
+.tool-link {
+    padding: 20px;
+    text-align: center;
+}
 </style>

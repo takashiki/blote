@@ -1231,6 +1231,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
             title: 'Base64 编解码'
         }
     }, {
+        path: '/urlEncode',
+        component: __webpack_require__(349),
+        meta: {
+            title: 'UrlEncode 编解码'
+        }
+    }, {
         path: '/php2json',
         component: __webpack_require__(204),
         meta: {
@@ -3967,7 +3973,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n.tool-link {\n  padding: 20px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -4036,6 +4042,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "Index",
@@ -4060,7 +4071,7 @@ var render = function() {
     [
       _c(
         "el-col",
-        { attrs: { span: 6 } },
+        { staticClass: "tool-link", attrs: { span: 6 } },
         [
           _c("router-link", { attrs: { to: { path: "/base64" } } }, [
             _vm._v("\n            Base64 编解码\n        ")
@@ -4071,7 +4082,18 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-col",
-        { attrs: { span: 6 } },
+        { staticClass: "tool-link", attrs: { span: 6 } },
+        [
+          _c("router-link", { attrs: { to: { path: "/urlEncode" } } }, [
+            _vm._v("\n            UrlEncode 编解码\n        ")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-col",
+        { staticClass: "tool-link", attrs: { span: 6 } },
         [
           _c("router-link", { attrs: { to: { path: "/php2json" } } }, [
             _vm._v("\n            PHP 数组转 Json\n        ")
@@ -4082,7 +4104,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-col",
-        { attrs: { span: 6 } },
+        { staticClass: "tool-link", attrs: { span: 6 } },
         [
           _c("router-link", { attrs: { to: { path: "/hash" } } }, [
             _vm._v("\n            字符串 Hash\n        ")
@@ -4093,7 +4115,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-col",
-        { attrs: { span: 6 } },
+        { staticClass: "tool-link", attrs: { span: 6 } },
         [
           _c("router-link", { attrs: { to: { path: "/timestamp" } } }, [
             _vm._v("\n            时间戳转换\n        ")
@@ -4466,6 +4488,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 var parser = __webpack_require__(224);
+var formatter = __webpack_require__(348);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -4477,7 +4500,11 @@ var parser = __webpack_require__(224);
 
     methods: {
         php2json: function php2json() {
-            this.output = JSON.stringify(parser.parse(this.input));
+            var config = {
+                type: 'space',
+                size: 2
+            };
+            this.output = formatter(parser.parse(this.input), config);
         }
     }
 });
@@ -17266,6 +17293,323 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1c98838f", module.exports)
+  }
+}
+
+/***/ }),
+/* 347 */,
+/* 348 */
+/***/ (function(module, exports) {
+
+/*
+  change for npm modules.
+  by Luiz Estácio.
+
+  json-format v.1.1
+  http://github.com/phoboslab/json-format
+
+  Released under MIT license:
+  http://www.opensource.org/licenses/mit-license.php
+*/
+var p = [],
+  indentConfig = {
+    tab: { char: '\t', size: 1 },
+    space: { char: ' ', size: 4 }
+  },
+  configDefault = {
+    type: 'tab'
+  },
+  push = function( m ) { return '\\' + p.push( m ) + '\\'; },
+  pop = function( m, i ) { return p[i-1] },
+  tabs = function( count, indentType) { return new Array( count + 1 ).join( indentType ); };
+
+function JSONFormat ( json, indentType ) {
+  p = [];
+  var out = "",
+      indent = 0;
+
+  // Extract backslashes and strings
+  json = json
+    .replace( /\\./g, push )
+    .replace( /(".*?"|'.*?')/g, push )
+    .replace( /\s+/, '' );    
+
+  // Indent and insert newlines
+  for( var i = 0; i < json.length; i++ ) {
+    var c = json.charAt(i);
+
+    switch(c) {
+      case '{':
+      case '[':
+        out += c + "\n" + tabs(++indent, indentType);
+        break;
+      case '}':
+      case ']':
+        out += "\n" + tabs(--indent, indentType) + c;
+        break;
+      case ',':
+        out += ",\n" + tabs(indent, indentType);
+        break;
+      case ':':
+        out += ": ";
+        break;
+      default:
+        out += c;
+        break;      
+    }         
+  }
+
+  // Strip whitespace from numeric arrays and put backslashes 
+  // and strings back in
+  out = out
+    .replace( /\[[\d,\s]+?\]/g, function(m){ return m.replace(/\s/g,''); } )
+    .replace( /\\(\d+)\\/g, pop ) // strings
+    .replace( /\\(\d+)\\/g, pop ); // backslashes in strings
+
+  return out;
+};
+
+module.exports = function(json, config){
+  config = config || configDefault;
+  var indent = indentConfig[config.type];
+
+  if ( indent == null ) {
+    throw new Error('Unrecognized indent type: "' + config.type + '"');
+  }
+  var indentType = new Array((config.size || indent.size) + 1).join(indent.char);
+  return JSONFormat(JSON.stringify(json), indentType);
+}
+
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(350)
+}
+var normalizeComponent = __webpack_require__(49)
+/* script */
+var __vue_script__ = __webpack_require__(352)
+/* template */
+var __vue_template__ = __webpack_require__(353)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "Resources\\assets\\js\\pages\\UrlEncode.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3b9dfb5e", Component.options)
+  } else {
+    hotAPI.reload("data-v-3b9dfb5e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 350 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(351);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(48)("e5f0fb10", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b9dfb5e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UrlEncode.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b9dfb5e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UrlEncode.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(25)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-row {\n  margin-bottom: 20px;\n}\n.el-row:last-child {\n    margin-bottom: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 352 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            input: '',
+            output: ''
+        };
+    },
+
+    methods: {
+        urlEncode: function urlEncode() {
+            /**
+             * php 中 rawurlencode 和 js 中此函数是一致的，建议 php 中弃用 urlencode，详见：
+             * https://blog.csdn.net/suofiya2008/article/details/6397168
+             */
+            this.output = encodeURIComponent(this.input);
+        },
+        urlDecode: function urlDecode() {
+            this.input = decodeURIComponent(this.output);
+        }
+    }
+});
+
+/***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-row",
+        { attrs: { type: "flex", justify: "center" } },
+        [
+          _c("el-input", {
+            attrs: {
+              type: "textarea",
+              rows: 5,
+              placeholder: "请输入编码前的内容"
+            },
+            model: {
+              value: _vm.input,
+              callback: function($$v) {
+                _vm.input = $$v
+              },
+              expression: "input"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-row",
+        { attrs: { type: "flex", justify: "center" } },
+        [
+          _c(
+            "el-button",
+            { attrs: { type: "primary" }, on: { click: _vm.urlEncode } },
+            [_vm._v("编码")]
+          ),
+          _vm._v(" "),
+          _c(
+            "el-button",
+            { attrs: { type: "success" }, on: { click: _vm.urlDecode } },
+            [_vm._v("解码")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-row",
+        { attrs: { type: "flex", justify: "center" } },
+        [
+          _c("el-input", {
+            attrs: {
+              type: "textarea",
+              rows: 5,
+              placeholder: "请输入编码后的内容"
+            },
+            model: {
+              value: _vm.output,
+              callback: function($$v) {
+                _vm.output = $$v
+              },
+              expression: "output"
+            }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3b9dfb5e", module.exports)
   }
 }
 

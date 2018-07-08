@@ -25,6 +25,13 @@ export default new VueRouter({
             }
         },
         {
+            path: '/urlEncode',
+            component: require('./pages/UrlEncode.vue'),
+            meta: {
+                title: 'UrlEncode 编解码'
+            }
+        },
+        {
             path: '/php2json',
             component: require('./pages/Php2Json.vue'),
             meta: {

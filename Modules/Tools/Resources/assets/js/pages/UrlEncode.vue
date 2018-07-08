@@ -4,18 +4,19 @@
             <el-input
                     type="textarea"
                     :rows="5"
-                    placeholder="PHP 数组"
+                    placeholder="请输入编码前的内容"
                     v-model="input">
             </el-input>
         </el-row>
         <el-row type="flex" justify="center">
-            <el-button type="primary" @click="php2json">转 Json</el-button>
+            <el-button type="primary" @click="urlEncode">编码</el-button>
+            <el-button type="success" @click="urlDecode">解码</el-button>
         </el-row>
         <el-row type="flex" justify="center">
             <el-input
                     type="textarea"
                     :rows="5"
-                    placeholder="Json 字符串"
+                    placeholder="请输入编码后的内容"
                     v-model="output">
             </el-input>
         </el-row>
@@ -23,9 +24,6 @@
 </template>
 
 <script>
-    const parser = require('php-array-parser');
-    const formatter = require('json-format');
-
     export default {
         data() {
             return {
@@ -34,12 +32,15 @@
             }
         },
         methods: {
-            php2json: function () {
-                const config = {
-                    type: 'space',
-                    size: 2
-                };
-                this.output = formatter(parser.parse(this.input), config);
+            urlEncode: function () {
+                /**
+                 * php 中 rawurlencode 和 js 中此函数是一致的，建议 php 中弃用 urlencode，详见：
+                 * https://blog.csdn.net/suofiya2008/article/details/6397168
+                 */
+                this.output = encodeURIComponent(this.input);
+            },
+            urlDecode: function () {
+                this.input = decodeURIComponent(this.output);
             }
         }
     }
