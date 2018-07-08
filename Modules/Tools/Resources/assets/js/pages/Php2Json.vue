@@ -4,19 +4,18 @@
             <el-input
                     type="textarea"
                     :rows="5"
-                    placeholder="请输入编码前的内容"
+                    placeholder="PHP 数组"
                     v-model="input">
             </el-input>
         </el-row>
         <el-row type="flex" justify="center">
-            <el-button type="primary" @click="base64Encode">编码</el-button>
-            <el-button type="success" @click="base64Decode">解码</el-button>
+            <el-button type="primary" @click="php2json">转 Json</el-button>
         </el-row>
         <el-row type="flex" justify="center">
             <el-input
                     type="textarea"
                     :rows="5"
-                    placeholder="请输入编码后的内容"
+                    placeholder="Json 字符串"
                     v-model="output">
             </el-input>
         </el-row>
@@ -24,6 +23,8 @@
 </template>
 
 <script>
+    const parser = require('php-array-parser');
+
     export default {
         name: "Base64",
         data() {
@@ -33,11 +34,8 @@
             }
         },
         methods: {
-            base64Encode: function () {
-                this.output = btoa(this.input);
-            },
-            base64Decode: function () {
-                this.input = atob(this.output);
+            php2json: function () {
+                this.output = JSON.stringify(parser.parse(this.input));
             }
         }
     }

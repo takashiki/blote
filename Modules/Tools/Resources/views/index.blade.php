@@ -12,7 +12,7 @@
                 <router-view></router-view>
             </el-main>
             <el-footer v-show="$route.name != 'index'">
-                <el-button type="primary" icon="el-icon-arrow-left" @click="goIndex">返回</el-button>
+                <el-button type="info" icon="el-icon-arrow-left" @click="goIndex">返回</el-button>
             </el-footer>
         </el-container>
     </div>

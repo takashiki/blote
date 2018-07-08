@@ -1,11 +1,16 @@
 <template>
-    <ul class="category">
-       <li class="tool">
-           <router-link :to="{path:'/base64'}">
-               Base64 编解码
-           </router-link>
-       </li>
-    </ul>
+    <el-row :gutter="20">
+        <el-col :span="6">
+            <router-link :to="{path:'/base64'}">
+                Base64 编解码
+            </router-link>
+        </el-col>
+        <el-col :span="6">
+            <router-link :to="{path:'/php2json'}">
+                PHP 数组转 Json
+            </router-link>
+        </el-col>
+    </el-row>
 </template>
 
 <script>
@@ -19,6 +24,6 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>
