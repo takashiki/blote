@@ -30,6 +30,13 @@ export default new VueRouter({
             meta: {
                 title: 'PHP 数组转 Json'
             }
+        },
+        {
+            path: '/hash',
+            component: require('./pages/Hash.vue'),
+            meta: {
+                title: '字符串 Hash'
+            }
         }
     ]
 });

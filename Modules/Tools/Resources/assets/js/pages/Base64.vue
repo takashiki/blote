@@ -25,7 +25,6 @@
 
 <script>
     export default {
-        name: "Base64",
         data() {
             return {
                 input: '',

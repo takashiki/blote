@@ -2,28 +2,23 @@
     <div>
         <el-row type="flex" justify="center">
             <el-input
-                    type="textarea"
-                    :rows="5"
-                    placeholder="PHP 数组"
+                    placeholder="字符串"
                     v-model="input">
             </el-input>
         </el-row>
         <el-row type="flex" justify="center">
-            <el-button type="primary" @click="php2json">转 Json</el-button>
+            <el-button type="primary" @click="md5Hash">md5</el-button>
+            <el-button type="success" @click="sha1Hash">sha1</el-button>
         </el-row>
         <el-row type="flex" justify="center">
-            <el-input
-                    type="textarea"
-                    :rows="5"
-                    placeholder="Json 字符串"
-                    v-model="output">
-            </el-input>
+            <pre>{{output}}</pre>
         </el-row>
     </div>
 </template>
 
 <script>
-    const parser = require('php-array-parser');
+    const md5 = require('js-md5');
+    const sha1 = require('js-sha1');
 
     export default {
         data() {
@@ -33,8 +28,11 @@
             }
         },
         methods: {
-            php2json: function () {
-                this.output = JSON.stringify(parser.parse(this.input));
+            md5Hash: function () {
+                this.output = md5(this.input);
+            },
+            sha1Hash: function () {
+                this.output = sha1(this.input);
             }
         }
     }
