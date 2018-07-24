@@ -43,7 +43,7 @@
         },
         methods: {
             decode: function () {
-                let millisecond = this.unit === 'second' ? this.timestamp * 1000 : this.timestamp;
+                let millisecond = this.unit === 'second' ? this.timestamp * 1000 : parseInt(this.timestamp);
                 this.time = dayjs(millisecond).format('YYYY-MM-DD HH:mm:ss');
             },
             encode: function () {
