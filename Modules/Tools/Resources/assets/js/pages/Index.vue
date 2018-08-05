@@ -21,6 +21,11 @@
             </router-link>
         </el-col>
         <el-col class="tool-link" :span="6">
+            <router-link :to="{path:'/randomStr'}">
+                随机字符串
+            </router-link>
+        </el-col>
+        <el-col class="tool-link" :span="6">
             <router-link :to="{path:'/timestamp'}">
                 时间戳转换
             </router-link>

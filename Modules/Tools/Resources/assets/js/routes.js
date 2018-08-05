@@ -46,6 +46,13 @@ export default new VueRouter({
             }
         },
         {
+            path: '/randomStr',
+            component: require('./pages/RandomStr.vue'),
+            meta: {
+                title: '随机字符串'
+            }
+        },
+        {
             path: '/timestamp',
             component: require('./pages/Timestamp.vue'),
             meta: {
