@@ -58,6 +58,13 @@ export default new VueRouter({
             meta: {
                 title: '时间戳转换'
             }
+        },
+        {
+            path: '/info',
+            component: require('./pages/Info.vue'),
+            meta: {
+                title: '浏览器信息'
+            }
         }
     ]
 });

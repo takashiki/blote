@@ -30,6 +30,11 @@
                 时间戳转换
             </router-link>
         </el-col>
+        <el-col class="tool-link" :span="6">
+            <router-link :to="{path:'/info'}">
+                客户端信息
+            </router-link>
+        </el-col>
     </el-row>
 </template>
 
