@@ -46,10 +46,24 @@ export default new VueRouter({
             }
         },
         {
+            path: '/randomStr',
+            component: require('./pages/RandomStr.vue'),
+            meta: {
+                title: '随机字符串'
+            }
+        },
+        {
             path: '/timestamp',
             component: require('./pages/Timestamp.vue'),
             meta: {
                 title: '时间戳转换'
+            }
+        },
+        {
+            path: '/info',
+            component: require('./pages/Info.vue'),
+            meta: {
+                title: '浏览器信息'
             }
         }
     ]
