@@ -15,9 +15,12 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-//必须放在最后面，因为 {slug} 会匹配所有不包含 / 的路径
+
 Route::get('/', 'ArticlesController@index');
+Route::get('/search', 'ArticlesController@index')->name('articles.search');
+//必须放在最后面，因为 {slug} 会匹配所有不包含 / 的路径
 Route::get('{slug}', 'ArticlesController@show')->name('articles.show');
+
 //兼容原 typecho 链接
 Route::get('/archives/{slug}', function ($slug) {
     return redirect()->route('articles.show', ['slug' => $slug]);

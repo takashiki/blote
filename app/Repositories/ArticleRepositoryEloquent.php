@@ -15,6 +15,10 @@ use App\Validators\ArticleValidator;
  */
 class ArticleRepositoryEloquent extends BaseRepository implements ArticleRepository
 {
+    protected $fieldSearchable = [
+        'title' => 'like',
+    ];
+
     /**
      * Specify Model class name
      *

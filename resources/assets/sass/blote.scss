@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+@import "variables";
+@import "~bulma/bulma";
+@import "~highlight.js/styles/atom-one-dark.css";
+
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+html {
+  background: $white-ter;
+}
+
+.header {
+  background: $forest;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  float: left;
+  margin: 0 1rem;
+  .nav-link {
+    a {
+      font-size: 1.2rem;
+      color: $white-ter;
+    }
+  }
+}
+
+.search-item {
+  float: right;
+  input {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    padding-right: 2rem;
+    color: $white-ter;
+    background: transparent;
+    border-bottom: 2px solid $white-ter;
+  }
+  button {
+    background: transparent;
+    border: none;
+    color: $white-ter;
+    margin-left: -2rem;
+  }
+}
+
+.pagination-link.is-current {
+  background-color: $forest;
+  border-color: $forest;
+}
+
+.article-list {
+  margin-top: 3rem;
+
+  section {
+    margin-top: -2rem;
+  }
+
+  a {
+    color: $forest;
+    &:hover {
+      color: $sumi;
+      border-bottom: 1px solid $sumi;
+    }
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 1.8rem;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    line-height: 1.3;
+
+    a {
+      &:hover {
+        border: none;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $sumi;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
+      transition-delay: 0s;
+    }
+    &:hover {
+      &::before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+.article-header {
+  padding: 3rem;
+}
