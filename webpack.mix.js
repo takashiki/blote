@@ -11,8 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
+mix.js('resources/assets/js/blote.js', 'public/js')
+    .sass('resources/assets/sass/blote.scss', 'public/css')
     .js('resources/assets/js/admin.js', 'public/js')
     .sass('resources/assets/sass/admin.scss', 'public/css')
-    .copyDirectory('node_modules/font-awesome/fonts', 'public/fonts/font-awesome');
+    .copyDirectory('node_modules/font-awesome/fonts', 'public/fonts/font-awesome')
+    .extract(['vue', 'highlight.js'], 'public/js/blote-vendor.js');
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+mix.browserSync({
+    proxy: 'blote.local'
+});

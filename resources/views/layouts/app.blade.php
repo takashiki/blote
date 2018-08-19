@@ -10,7 +10,7 @@
 
     <title>@yield('title', config('app.name'))</title>
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/blote.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -25,6 +25,8 @@
 </head>
 <body>
 <div id="app">
+    @include('particals.header')
+
     <div class="container">
         @yield('content')
     </div>
@@ -33,7 +35,9 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/manifest.js') }}"></script>
+<script src="{{ mix('js/blote-vendor.js') }}"></script>
+<script src="{{ mix('js/blote.js') }}"></script>
 
 @yield('scripts')
 
