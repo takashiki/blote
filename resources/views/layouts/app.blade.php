@@ -10,7 +10,7 @@
 
     <title>@yield('title', config('app.name'))</title>
 
-    <link rel="stylesheet" href="{{ mix('css/blote.css') }}">
+    <link rel="stylesheet" href="{{ cix('css/blote.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -35,9 +35,9 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ mix('js/manifest.js') }}"></script>
-<script src="{{ mix('js/blote-vendor.js') }}"></script>
-<script src="{{ mix('js/blote.js') }}"></script>
+<script src="{{ cix('js/manifest.js') }}"></script>
+<script src="{{ cix('js/blote-vendor.js') }}"></script>
+<script src="{{ cix('js/blote.js') }}"></script>
 
 @yield('scripts')
 
