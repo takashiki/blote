@@ -21,6 +21,7 @@ mix.js('resources/assets/js/blote.js', 'public/js').
   sass('resources/assets/sass/admin.scss', 'public/css').
   copyDirectory('node_modules/font-awesome/fonts', 'public/fonts/font-awesome').
   extract(['vue', 'highlight.js'], 'public/js/blote-vendor.js');
+mix.setResourceRoot('../../public/');
 
 if (mix.inProduction()) {
   mix.version();
