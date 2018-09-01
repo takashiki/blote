@@ -8,16 +8,16 @@
         <title>Tools</title>
 
        {{-- Laravel Mix - CSS File --}}
-       <link rel="stylesheet" href="{{ mix('css/tools.css') }}">
+       <link rel="stylesheet" href="{{ cix('css/tools.css') }}">
 
     </head>
     <body>
         @yield('content')
 
         {{-- Laravel Mix - JS File --}}
-        <script src="{{ mix('js/manifest.js') }}"></script>
-        <script src="{{ mix('js/vendor.js') }}"></script>
-        <script src="{{ mix('js/tools.js') }}"></script>
+        <script src="{{ cix('js/manifest.js') }}"></script>
+        <script src="{{ cix('js/vendor.js') }}"></script>
+        <script src="{{ cix('js/tools.js') }}"></script>
 
         @yield('scripts')
     </body>
