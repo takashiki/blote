@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Blog;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\ArticleRepository;

@@ -6,17 +6,18 @@ use App\Http\Requests\ArticleCreateRequest;
 
 use App\Http\Requests\ArticleUpdateRequest;
 use App\Repositories\ArticleRepository;
+use App\Repositories\BlogRepository;
 use App\Validators\ArticleValidator;
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 /**
- * Class ArticlesController.
+ * Class BlogController.
  *
  * @package namespace App\Http\Controllers;
  */
-class ArticlesController extends Controller
+class BlogController extends Controller
 {
     /**
      * @var ArticleRepository
@@ -29,12 +30,12 @@ class ArticlesController extends Controller
     protected $validator;
 
     /**
-     * ArticlesController constructor.
+     * blogsController constructor.
      *
-     * @param ArticleRepository $repository
+     * @param BlogRepository $repository
      * @param ArticleValidator  $validator
      */
-    public function __construct(ArticleRepository $repository, ArticleValidator $validator)
+    public function __construct(BlogRepository $repository, ArticleValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
@@ -48,18 +49,18 @@ class ArticlesController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $articles = $this->repository->orderBy(
+        $blogs = $this->repository->orderBy(
             config('blote.article.sortColumn'),
             config('blote.article.sort')
         )->paginate(config('blote.article.pageSize'));
 
         if (request()->wantsJson()) {
             return response()->json([
-                'data' => $articles,
+                'data' => $blogs,
             ]);
         }
 
-        return view('articles.index', compact('articles'));
+        return view('blogs.index', compact('blogs'));
     }
 
     /**
@@ -71,14 +72,14 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $article = $this->repository->findByIdentity($id);
+        $blog = $this->repository->findByIdentity($id);
 
         if (request()->wantsJson()) {
             return response()->json([
-                'data' => $article,
+                'data' => $blog,
             ]);
         }
 
-        return view('articles.show', compact('article'));
+        return view('blogs.show', compact('blog'));
     }
 }

@@ -13,11 +13,11 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 
 /**
- * Class ArticlesController.
+ * Class ArticleController.
  *
  * @package namespace App\Http\Controllers;
  */
-class ArticlesController extends Controller
+class ArticleController extends Controller
 {
     /**
      * @var ArticleRepository
@@ -61,6 +61,11 @@ class ArticlesController extends Controller
         }
 
         return view('articles.index', compact('articles'));
+    }
+
+    public function create()
+    {
+        return view('admin.articles.create');
     }
 
     /**

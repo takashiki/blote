@@ -38,6 +38,7 @@
 <script src="{{ cix('js/manifest.js') }}"></script>
 <script src="{{ cix('js/blote-vendor.js') }}"></script>
 <script src="{{ cix('js/blote.js') }}"></script>
+<script src="{{ cix('js/mde.js') }}"></script>
 
 @yield('scripts')
 

@@ -19,12 +19,14 @@ mix.js('resources/assets/js/blote.js', 'public/js').
   sass('resources/assets/sass/blote.scss', 'public/css').
   js('resources/assets/js/admin.js', 'public/js').
   sass('resources/assets/sass/admin.scss', 'public/css').
+  js('resources/assets/js/mde.js', 'public/js').
   copyDirectory('node_modules/font-awesome/fonts', 'public/fonts/font-awesome').
   extract(['vue', 'highlight.js'], 'public/js/blote-vendor.js');
-mix.setResourceRoot('../../public/');
 
 if (mix.inProduction()) {
   mix.version();
+  mix.setPublicPath('./public/');
+  mix.setResourceRoot('../../public/');
   mix.webpackConfig({
     plugins: [
       new CosPlugin({

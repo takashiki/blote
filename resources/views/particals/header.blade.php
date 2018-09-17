@@ -6,7 +6,7 @@
                     <li class="nav-link"><a href="/">首页</a></li>
                 </ul>
                 <diV class="search-item">
-                    <form action="{{ route('articles.search') }}" method="get">
+                    <form action="{{ route('blogs.search') }}" method="get">
                         <input type="text" name="keyword" value="{{ Request::query('keyword') }}">
                         <button type="submit">
                             <span class="icon"><i class="fa fa-search"></i></span>

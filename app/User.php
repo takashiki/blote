@@ -32,7 +32,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereSettings($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  */
-class User extends Model
+class User extends Authenticatable
 {
     use Notifiable;
 
