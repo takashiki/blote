@@ -137,7 +137,7 @@ class ArticleController extends Controller
     {
         $article = $this->repository->find($id);
 
-        return view('articles.edit', compact('article'));
+        return view('admin.articles.edit', compact('article'));
     }
 
     /**

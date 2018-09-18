@@ -16,6 +16,8 @@ Route::group([
     'middleware' => ['web', 'auth'],
 ], function () {
     Route::resource('articles', 'ArticleController');
+    Route::post('upload', 'CommonController@upload');
+    Route::post('uploadBlob', 'CommonController@uploadBlob');
 });
 
 Auth::routes();
