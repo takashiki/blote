@@ -11,6 +11,7 @@
         initialValue: initVal,
         previewStyle: 'vertical',
         height: '500px',
+        useCommandShortcut: false,
         exts: ['scrollSync'],
         events: {
           change: function () {

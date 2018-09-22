@@ -56,7 +56,11 @@ class Article extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+    ];
 
     public function getHtmlAttribute()
     {
