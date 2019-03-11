@@ -11,6 +11,11 @@
             </router-link>
         </el-col>
         <el-col class="tool-link" :span="6">
+            <router-link :to="{path:'/unicode'}">
+                Unicode 编解码
+            </router-link>
+        </el-col>
+        <el-col class="tool-link" :span="6">
             <router-link :to="{path:'/php2json'}">
                 PHP 数组转 Json
             </router-link>

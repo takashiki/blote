@@ -40,7 +40,7 @@
               this.output =  "\\u" + res.join("\\u");
             },
             unicodeDecode: function () {
-              this.input = decodeURI(this.output.replace(/\\/g, "%"));
+              this.input = eval("'" + this.output + "'");
             }
         }
     }
