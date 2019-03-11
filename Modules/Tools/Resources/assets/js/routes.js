@@ -65,6 +65,13 @@ export default new VueRouter({
             meta: {
                 title: '浏览器信息'
             }
+        },
+        {
+            path: '/unicode',
+            component: require('./pages/Unicode.vue'),
+            meta: {
+                title: 'Unicode 编解码'
+            }
         }
     ]
 });
