@@ -60,6 +60,8 @@ class Article extends Model implements Transformable
         'title',
         'slug',
         'content',
+        'type',
+        'order',
     ];
 
     public function getHtmlAttribute()

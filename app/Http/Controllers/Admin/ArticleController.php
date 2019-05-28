@@ -65,7 +65,9 @@ class ArticleController extends Controller
 
     public function create()
     {
-        return view('admin.articles.create');
+        $article = $this->repository->create(['title' => '', 'slug' => '', 'content' => '', 'type' => 1, 'order' => 0]);
+
+        return view('admin.articles.edit', compact('article'));
     }
 
     /**
