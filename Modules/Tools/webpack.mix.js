@@ -1,7 +1,7 @@
 require('dotenv').config({path: '../../.env'});
 require('laravel-mix-merge-manifest');
 
-const {mix} = require('laravel-mix');
+const mix = require('laravel-mix');
 const CosPlugin = require('cos-webpack');
 
 mix.setPublicPath('../../public').mergeManifest();
