@@ -1,10 +1,10 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
-window.Bus = new Vue({data: {title: '工具集1'}});
-
+import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+window.Vue = Vue;
 Vue.use(ElementUI);
 
 import router from './routes';
@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
     next();
 });
 
-new Vue({
+const app = new Vue({
     el: '#app',
     data: {
         title: '工具集'
